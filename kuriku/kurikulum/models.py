@@ -1,23 +1,43 @@
 from django.db import models
 
 class CPL(models.Model):
+
     KATEGORI_CHOICES = [
         ('sikap', 'Sikap'),
         ('pengetahuan', 'Pengetahuan'),
         ('keterampilan', 'Keterampilan'),
     ]
+    
     kode = models.CharField(max_length=20, unique=True)
     deskripsi = models.TextField()
-    kategori = models.CharField(max_length=20, choices=KATEGORI_CHOICES)
+    kategori = models.CharField(max_length=20, choices=KATEGORI_CHOICES, blank=True)
     
     def __str__(self):
         return f"{self.kode} - {self.deskripsi}"
 
 class Matakuliah(models.Model):
+    class KelompokMK(models.IntegerChoices):
+        MKWK = 1, 'MKWK'
+        PENCIRI = 2,'Penciri UPGRIS'
+        WAJIB = 3, 'Wajib'
+        PILIHAN = 4, 'Pilihan'
+        WAJIBMINAT = 5,'Wajib Peminatan'
+        PILIHANMINAT = 6,'Pilihan Peminatan'
+        TUGASAKHIR = 7,'Tugas Akhir'
+    
+    class Pelaksanaan(models.IntegerChoices):
+        TEORI= 1, 'Teori'
+        PRAKTEK = 2, 'Praktek'
+        SEMINAR = 3,'Seminar/Simulasi'
+        LAPANGAN = 4,'Kuliah Lapangan'
+        TA = 5,'Tugas Akhir'
+
     kode = models.CharField(max_length=10, unique=True)
     nama = models.CharField(max_length=100)
     sks = models.PositiveIntegerField()
     semester = models.PositiveIntegerField()
+    pelaksanaan = models.IntegerField(choices=Pelaksanaan.choices, default=Pelaksanaan.TEORI)
+    kelompokmk = models.IntegerField(choices=KelompokMK.choices, default=KelompokMK.MKWK)
     cpls = models.ManyToManyField(CPL, through='MatakuliahCPL', related_name='matakuliahs')
     
     def __str__(self):

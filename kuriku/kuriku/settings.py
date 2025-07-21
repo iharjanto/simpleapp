@@ -26,7 +26,10 @@ SECRET_KEY = 'django-insecure-lnbaq992u10ye1riej&qqw++7ajq55mc#v0(ho33!hu9$0urzk
 DEBUG = True
 
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = ['pymad34.pythonanywhere.com', 'localhost','elektroupgris.pythonanywhere.com']
+ALLOWED_HOSTS = ['pymad34.pythonanywhere.com', 
+                 'localhost',
+                 '127.0.0.1',
+                 'elektroupgris.pythonanywhere.com']
 
 
 # Application definition
@@ -78,7 +81,7 @@ WSGI_APPLICATION = 'kuriku.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'mydb.sqlite3',
     }
 }
 
