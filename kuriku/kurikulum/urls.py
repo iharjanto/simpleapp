@@ -6,10 +6,10 @@ router = DefaultRouter()
 
 
 urlpatterns = [
-    path("", include(router.urls)),
+    # path("", include(router.urls)),
     path("api/matakuliah/", views.MKList.as_view(), name="matakuliah-api"),
     path("api/matakuliah/<int:pk>/", views.MKDetail.as_view(), name="matakuliah-detail-api"),
-    path("matakuliah/", views.matakuliah_table, name="matakuliah-table"),
+    path("", views.matakuliah_table, name="matakuliah-table"),
     path(
         "matakuliah/<int:pk>/detail/", views.matakuliah_detail, name="matakuliah-detail"
     ),
