@@ -1,0 +1,34 @@
+[
+{
+  "model": "kurikulum.matakuliah",
+  "pk": 1,
+  "fields": {
+    "kode": "MK2023",
+    "nama": "Matematika Teknik",
+    "sks": 3,
+    "semester": 2,
+    "kodeprodi": 66,
+    "tahunkurikulum": 25,
+    "kelompokmk": 3,
+    "basicscience": false,
+    "pelaksanaan": 1,
+    "kkni": "6"
+  }
+},
+{
+  "model": "kurikulum.matakuliah",
+  "pk": 2,
+  "fields": {
+    "kode": "MK2024",
+    "nama": "Pengolahan Isyarat Digital",
+    "sks": 3,
+    "semester": 2,
+    "kodeprodi": 66,
+    "tahunkurikulum": 25,
+    "kelompokmk": 3,
+    "basicscience": false,
+    "pelaksanaan": 1,
+    "kkni": "6"
+  }
+}
+]

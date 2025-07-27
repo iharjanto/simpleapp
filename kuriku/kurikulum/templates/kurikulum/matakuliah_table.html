@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Daftar Matakuliah{% endblock %} {% {%
+{%block content %}
+<h1>Daftar Matakuliah per Semester</h1>
+{% for semester, matakuliahs in grouped_matakuliahs.items %}
+<h3>Semester {{ semester }}</h3>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Kode</th>
+      <th>Nama</th>
+      <th>SKS</th>
+      <th>Detail</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for mk in matakuliahs %}
+    <tr>
+      <td>{{ mk.kode }}</td>
+      <td>{{ mk.nama }}</td>
+      <td>{{ mk.sks }}</td>
+      <td>
+        <a
+          href="{% url 'matakuliah-detail' mk.pk %}"
+          class="btn btn-sm btn-info"
+          >Detail</a
+        >
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endfor %} {% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Detail Matakuliah{% endblock %}
+{%block content %}
+<h2>Detail Matakuliah</h2>
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">{{ matakuliah.nama }} ({{ matakuliah.kode }})</h5>
+    <p class="card-text"><strong>SKS: </strong>{{ matakuliah.sks }}</p>
+    <p class="card-text"><strong>Semester: </strong>{{ matakuliah.semester }}</p>
+    <p class="card-text"><strong>CPL: </strong></p>
+    <ul>
+      {% for cpl in matakuliah.cpls.all %}
+      <li>{{ cpl.kode }} - {{ cpl.deskripsi }}</li>
+      {% endfor %}
+
+  </div>
+</div>
+<table class="table mb-4">
+  <thead>
+    <tr>
+      <th scope="col">CPL</th>
+      <th scope="col">CPMK</th>
+      <th scope="col">Deskripsi CPL Terkait</th>
+      <th scope="col">Bentuk Penilaian</th>
+      <th scope="col">Bobot</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cpl in cpl_data %}
+    <tr>
+      <td>{{ cpl.cpl.kode }}</td>
+      <td>{{ cpl.cpmk.deskripsi }}</td>
+      <td>{{ cpl.subcpmk.deskripsi }}</td>
+      <td>{{ cpl.subcpmk.bentuk }}</td>
+      <td>{{ cpl.subcpmk.bobot }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
