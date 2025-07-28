@@ -3,24 +3,44 @@
 <h2>Detail Matakuliah</h2>
 <div class="card mb-4">
   <div class="card-body">
-    <h5 class="card-title">{{ matakuliah.nama }} ({{ matakuliah.kode }})</h5>
-    <p class="card-text"><strong>SKS: </strong>{{ matakuliah.sks }}</p>
-    <p class="card-text"><strong>Semester: </strong>{{ matakuliah.semester }}</p>
-    <p class="card-text"><strong>CPL: </strong></p>
-    <ul>
-      {% for cpl in matakuliah.cpls.all %}
-      <li>{{ cpl.kode }} - {{ cpl.deskripsi }}</li>
-      {% endfor %}
+    <div class="row">
+      <h5 class="card-title">{{ matakuliah.nama }} ({{ matakuliah.kode }})</h5>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <p class="card-text"><strong>SKS: </strong>{{ matakuliah.sks }}</p>
+        <p class="card-text"><strong>Semester: </strong>{{ matakuliah.semester }}</p>
 
+
+      </div>
+      <div class="col-sm">
+        <p class="card-text"><strong>Kelopok Mata Kuliah: </strong>{{ matakuliah.get_kelompokmk_display }}</p>
+        <p class="card-text"><strong>Pelaksanaan : </strong>{{ matakuliah.get_pelaksanaan_display }}</p>
+
+      </div>
+
+    </div>
+    <div class="container">
+      <div class="row">
+      <p class="card-text"><strong>CPL: </strong></p>
+      <ol>
+        {% for cpl in matakuliah.cpls.all %}
+        <li>{{ cpl.kode }} - {{ cpl.deskripsi }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+
+    </div>
   </div>
 </div>
-<table class="table mb-4">
+<table class="table mb-4 table-striped ">
   <thead>
     <tr>
       <th scope="col">CPL</th>
       <th scope="col">CPMK</th>
       <th scope="col">Deskripsi CPL Terkait</th>
       <th scope="col">Bentuk Penilaian</th>
+      <th scope="col">Jenis Tugas</th>
       <th scope="col">Bobot</th>
     </tr>
   </thead>
@@ -31,6 +51,7 @@
       <td>{{ cpl.cpmk.deskripsi }}</td>
       <td>{{ cpl.subcpmk.deskripsi }}</td>
       <td>{{ cpl.subcpmk.bentuk }}</td>
+      <td>{{ cpl.subcpmk.jenistugas }}</td>
       <td>{{ cpl.subcpmk.bobot }}</td>
     </tr>
     {% endfor %}
