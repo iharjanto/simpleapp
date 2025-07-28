@@ -36,7 +36,7 @@ def matakuliah_detail(request, pk):
     for cpl in mk.cpls.all():
         cpl_data = {"cpl": cpl, "cpmks": []}
         for cpmk in cpl.cpmks.filter(matakuliah=mk):
-            subcpmks = cpmk.subcpmks.all()
+            subcpmks = cpmk.subcpmks.all().order_by('id')
             cpl_data["cpmks"].append({"cpmk": cpmk, "subcpmks": subcpmks})
             for subcpmk in subcpmks:
                 data.append({"cpl": cpl, "cpmk": cpmk, "subcpmk": subcpmk})
